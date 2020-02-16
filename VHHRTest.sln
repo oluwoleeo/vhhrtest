@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionStatement", "TransactionStatement\TransactionStatement.csproj", "{4C4BFF57-3B68-44BD-AA28-ABB4A42C2015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionStatement", "TransactionStatement\TransactionStatement.csproj", "{4C4BFF57-3B68-44BD-AA28-ABB4A42C2015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingSchedule", "MeetingSchedule\MeetingSchedule.csproj", "{D81D01BD-8D4E-48B0-94E3-AE0937E872FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4C4BFF57-3B68-44BD-AA28-ABB4A42C2015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C4BFF57-3B68-44BD-AA28-ABB4A42C2015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C4BFF57-3B68-44BD-AA28-ABB4A42C2015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81D01BD-8D4E-48B0-94E3-AE0937E872FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81D01BD-8D4E-48B0-94E3-AE0937E872FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81D01BD-8D4E-48B0-94E3-AE0937E872FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81D01BD-8D4E-48B0-94E3-AE0937E872FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
