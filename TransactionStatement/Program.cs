@@ -35,26 +35,39 @@ namespace TransactionStatement
                         RootObject rtObj = JsonConvert.DeserializeObject<RootObject>(response);
                         List<DataRecord> dataRecords = rtObj.data;
                         IEnumerable<UserIdAmount> filteredRecs =  dataRecords.Where(rcrd => rcrd.location.id == locationId)
-                            ?.Select(r => new UserIdAmount { userId = r.userId, amount = Convert.ToInt32(Convert.ToDecimal(r.amount.Substring(1))) });
+                            ?.Select(r => new UserIdAmount { userId = r.userId, amount = Convert.ToDecimal(r.amount.Substring(1)) });
 
                         /* .Select(r => new UserIdAmount { userId = r.userId, amount = Convert.ToInt32(Math.Floor(Convert.ToDecimal(r.amount.Substring(1)))) });
                         .Select(r => new UserIdAmount { userId = r.userId, amount = Convert.ToInt32(Convert.ToDecimal(r.amount.Substring(1))) }); */
 
                         if (filteredRecs != null)
                         {
+                            Dictionary<int, decimal> overfD = new Dictionary<int, decimal>();
+                            
                             foreach (UserIdAmount uIA in filteredRecs)
                             {
                                 int arr = userIdDetails.IndexOf(userIdDetails.Where(r => r[0] == uIA.userId).FirstOrDefault());
 
-                                if (arr == -1)
+                                decimal overf = Convert.ToDecimal(uIA.amount.ToString().Substring(uIA.amount.ToString().IndexOf('.')));
+                                int real = Convert.ToInt32(Convert.ToDecimal(uIA.amount.ToString().Substring(0, uIA.amount.ToString().IndexOf('.'))));
+
+                                if (!overfD.ContainsKey(uIA.userId))
                                 {
-                                    userIdDetails.Add(new List<int>() { uIA.userId, uIA.amount });
+                                    overfD.Add(uIA.userId, overf);
                                 }
                                 else
                                 {
-                                    userIdDetails[arr][1] += uIA.amount; 
+                                    overfD[uIA.userId] += overf;
                                 }
-                                
+
+                                if (arr == -1)
+                                {
+                                    userIdDetails.Add(new List<int>() { uIA.userId, real });
+                                }
+                                else
+                                {
+                                    userIdDetails[arr][1] += real + Convert.ToInt32(Math.Floor(overfD[uIA.userId])); 
+                                }
                             }
                         }
                     }

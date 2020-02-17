@@ -36,6 +36,6 @@ namespace TransactionStatement.Entity
     class UserIdAmount
     {
         public int userId { get; set; }
-        public int amount { get; set; }
+        public decimal amount { get; set; }
     }
 }
